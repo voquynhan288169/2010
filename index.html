@@ -241,6 +241,22 @@ body.skyOn #skyBack,body.skyOn #skyFront,body.skyOn #doveWrap{visibility:visible
 .mail .env .flap{left:1%;right:1%;clip-path:polygon(9.67% 19.35%,7.59% 14.81%,6.19% 10.88%,5.47% 7.56%,5.42% 4.84%,6.05% 2.72%,7.35% 1.21%,9.34% 0.30%,12.00% 0.00%,88.00% 0.00%,90.66% 0.30%,92.65% 1.21%,93.95% 2.72%,94.58% 4.84%,94.53% 7.56%,93.81% 10.88%,92.41% 14.81%,90.33% 19.35%,62.90% 74.20%,59.67% 79.85%,56.45% 83.88%,53.22% 86.30%,50.00% 87.10%,46.78% 86.30%,43.55% 83.88%,40.33% 79.85%,37.10% 74.20%);background:linear-gradient(180deg,#f8e7bf,#ecd199);filter:drop-shadow(0 3px 4px rgba(90,60,10,.25))}
 .mail.open .env .flap{background:linear-gradient(0deg,#fbefd0,#e9cd93)}
 .mail .pv{border-radius:10px;box-shadow:0 3px 10px rgba(60,40,10,.25),inset 0 0 0 1px rgba(217,180,106,.55)}
+
+/* ===== v7: dọn các mảng trắng thừa ===== */
+.mail .env-front::after{display:none}
+.mail .env .flap{filter:none}
+.mail .env-back{box-shadow:0 30px 60px rgba(0,20,70,.5)}
+.mail .env-front,.mail .env-front::before{border-radius:0 0 18px 18px}
+.mail .pv{box-shadow:0 2px 8px rgba(60,40,10,.22);border-radius:8px 8px 4px 4px}
+
+/* ===== v8: phong thư giấy kem như thật ===== */
+.mail .env-back{border-radius:6px;background:linear-gradient(160deg,#e6d4a8,#d9c28f);box-shadow:0 28px 56px rgba(0,10,50,.5)}
+.mail .pv{border-radius:3px;background:#fffdf7 repeating-linear-gradient(transparent 0 21px,rgba(150,120,90,.16) 21px 22px);box-shadow:0 1px 4px rgba(60,40,10,.25)}
+.mail .env-front{border-radius:0 0 6px 6px;background:linear-gradient(170deg,#faf2da,#efe0b8)}
+.mail .env-front::before{border-radius:0 0 6px 6px;background:linear-gradient(180deg,#f6ebcb,#ecdcb2)}
+.mail .env-front::after{display:block;border-radius:6px;background:linear-gradient(90deg,rgba(255,255,255,.18),rgba(140,105,50,.07) 50%,rgba(255,255,255,.18))}
+.mail .env .flap{left:0;right:0;border-radius:0;clip-path:polygon(1.61% 3.22%,1.27% 2.47%,1.03% 1.81%,0.91% 1.26%,0.90% 0.81%,1.01% 0.45%,1.23% 0.20%,1.56% 0.05%,2.00% 0.00%,98.00% 0.00%,98.44% 0.05%,98.77% 0.20%,98.99% 0.45%,99.10% 0.81%,99.09% 1.26%,98.97% 1.81%,98.73% 2.47%,98.39% 3.22%,54.84% 90.33%,53.63% 92.44%,52.42% 93.95%,51.21% 94.86%,50.00% 95.16%,48.79% 94.86%,47.58% 93.95%,46.37% 92.44%,45.16% 90.33%);background:linear-gradient(180deg,#fdf7e4,#f1e4c0);filter:drop-shadow(0 3px 3px rgba(90,65,20,.3))}
+.mail.open .env .flap{background:linear-gradient(0deg,#f4e8c8,#decb9b);filter:none}
 </style>
 
 <script src="content.js"></script>
@@ -919,6 +935,9 @@ body{text-rendering:auto!important}
 #intro .env.open .flap{background:linear-gradient(180deg,#f0b3b0,#dc8f92)}
 #intro .env .addr{color:#2c4a80;text-shadow:0 1px 0 rgba(255,255,255,.7)}
 #intro .env .stamp{border-radius:6px}
+#intro .dvl .env{box-shadow:0 34px 50px -22px rgba(110,25,55,.55),0 10px 18px -8px rgba(110,25,55,.25)}
+#intro .env .flap{filter:none}
+#intro .env .pk::after{box-shadow:inset 0 0 0 1px rgba(226,185,109,.7),inset 0 -14px 24px -16px rgba(150,70,60,.22)}
 #intro .dvl{translate:0 clamp(40px,17vh,170px)}
 @media(max-width:760px){#intro .dvl{translate:0 14px}}
 
@@ -1093,7 +1112,7 @@ const sz=()=>{W=innerWidth;H=innerHeight;const d=Math.min(devicePixelRatio||1,1.
     raf=requestAnimationFrame(frame);return cos};
   
 
-  function unlock(){hideChar();intro.classList.add('out');B.classList.remove('locked');[wish,book,heart,mail,end].forEach(s=>s.classList.remove('gone'));dots.hidden=false;requestAnimationFrame(tick);hold.splice(0).forEach(e=>io.observe(e));setTimeout(()=>intro.remove(),1000);setTimeout(()=>say(pick()||C.hello),1500)}
+  function unlock(){hideChar();intro.classList.add('out');B.classList.remove('locked');requestAnimationFrame(tick);hold.splice(0).forEach(e=>io.observe(e));setTimeout(()=>intro.remove(),1000);setTimeout(()=>say(pick()||C.hello),1500)}
   // lịch tháng 10: bảng trái = ngày đang chọn, bảng phải = lịch chuẩn
   const Y=D.year||new Date().getFullYear(),dayOf=d=>D.days.find(x=>x.d===d);let sel=10;const TN=new Date(),TD=TN.getFullYear()===Y&&TN.getMonth()===9?TN.getDate():0;const cells={},dp=h('div',{class:'dp'}),grid=h('div',{class:'grid'});
   function drawDay(){const d=sel,e=dayOf(d);dp.style.setProperty('--dc',e?e.color:'#e9b8b0');
@@ -1138,13 +1157,13 @@ const sz=()=>{W=innerWidth;H=innerHeight;const d=Math.min(devicePixelRatio||1,1.
   // đoạn kết
   const ee=D.ending,end=sec('end','s-wine gone',fx?h('div',{class:'hearts'},[...Array(16)].map(()=>h('i',{class:'fh',css:{'--x':R(2,96)+'%','--s':R(14,30)+'px','--d':R(9,16)+'s','--w':-R(0,14)+'s','--sx':R(-40,40)+'px'}},'♥'))):null,h('div',{class:'en'},rv(h('p',{class:'hand'},D.sign)),rv(h('h1',{},em(ee.title)),1),rv(h('p',{class:'big'},ee.text),2),rv(h('button',{class:'btn',onclick:()=>{smooth(cal);say('Xem lại từ đầu nha!')}},'Xem lại hành trình'),3)));
   const ids=['cal','wish','book','heart','mail','end'],names=['Lịch','Lời chúc','Kỷ niệm','Trái tim','Thư','Kết'],dots=h('nav',{class:'dots','aria-label':'Các phần',hidden:true},ids.map((id,i)=>h('button',{'aria-label':names[i],title:names[i],onclick:()=>smooth($('#'+id))})));
-  const bar=h('i',{id:'bar'});B.prepend(bar);B.append(h('main',{id:'flow'},cal,wish,book,heart,mail,end),dots,intro);
+  const bar=h('i',{id:'bar'});B.prepend(bar);B.append(cal,h('main',{id:'flow',class:'gone'},wish,book,heart,mail,end),dots,intro);
   if(useDraft)B.append(h('a',{class:'draft',href:'?live',title:'Xem bản đã đăng'},'BẢN NHÁP · chỉ thấy trên máy này'));
   if(D.music){const a=h('audio',{src:D.music,loop:true}),b=h('button',{class:'btn',style:'',css:{position:'fixed',top:'12px',right:'12px','z-index':41,padding:'.6em 1em'},onclick:()=>{a.paused?a.play().catch(()=>{}):a.pause()}},'♪');B.append(a,b)}
   // burst cánh hoa + mở quà
   let gift=false,last=0;
   function burst(){if(!fx)return;for(let i=0;i<26;i++){const p=h('i',{class:'petal',css:{'--dx':R(-48,48)+'vw','--dy':-R(0,38)+'vh','--d':R(4.5,7.5)+'s','--s':R(10,20)+'px','--w':R(0,.5)+'s','--c':['#e9b8b0','#e9b8b0','#b3262f','#c79a4b'][i%4]}});B.append(p);setTimeout(()=>p.remove(),8500)}}
-  function openGift(){if(!gift){gift=true;[wish,book,heart,mail,end].forEach(s=>s.classList.remove('gone'));dots.hidden=false}smooth(wish);say('Quà của bạn đây!',3500);requestAnimationFrame(tick)}
+  function openGift(){if(!gift){gift=true;$('#flow').classList.remove('gone');[wish,book,heart,mail,end].forEach(s=>s.classList.remove('gone'));dots.hidden=false}smooth(wish);say('Quà của bạn đây!',3500);requestAnimationFrame(tick)}
   new IntersectionObserver(es=>es.forEach(e=>{if(!warming&&e.isIntersecting&&Date.now()-last>7000){last=Date.now();burst()}}),{threshold:.4}).observe(wish);
   const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)[...dots.children].forEach((d,i)=>d.classList.toggle('on',ids[i]===e.target.id))}),{threshold:.35});[cal,wish,book,heart,mail,end].forEach(s=>so.observe(s));
   // hiệu ứng theo cuộn: thanh tiến độ, parallax ảnh, chữ sáng dần, nhân vật nghiêng
@@ -1164,7 +1183,7 @@ const sz=()=>{W=innerWidth;H=innerHeight;const d=Math.min(devicePixelRatio||1,1.
   let touch=false,wl=0,wb=0;addEventListener('touchstart',()=>{touch=true},{passive:true});
   let TP=null;const calcTops=()=>{TP={};ids.forEach(id=>{const e=$('#'+id);TP[id]=e.getBoundingClientRect().top+scrollY-(parseFloat(getComputedStyle(e).scrollMarginTop)||0)})},secTop=id=>{if(!TP)calcTops();return TP[id]};addEventListener('resize',()=>{TP=null});if(window.ResizeObserver)new ResizeObserver(()=>{TP=null}).observe($('#flow'));const goY=y=>scrollTo({top:y,behavior:reduce?'auto':'smooth'});
   const _w=e=>{touch=false;
-    if(e.ctrlKey||B.classList.contains('locked')||!lb.hidden||!modal.hidden)return;
+    if(!gift||e.ctrlKey||B.classList.contains('locked')||!lb.hidden||!modal.hidden)return;
     if(e.target.closest&&e.target.closest('.dp,.sheet,input,textarea'))return;
     const d=e.deltaY,now=Date.now();if(Math.abs(d)<3)return;
     if(now<wl||(now-wb<140&&now<wl+1200)){e.preventDefault();wb=now;return}
@@ -1178,7 +1197,7 @@ const sz=()=>{W=innerWidth;H=innerHeight;const d=Math.min(devicePixelRatio||1,1.
   let navI=-1,navT=0;
   addEventListener('keydown',e=>{
     if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
-    if(e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||B.classList.contains('locked'))return;
+    if(!gift||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||B.classList.contains('locked'))return;
     const t=e.target;if(t&&t.closest&&t.closest('input,textarea,select'))return;
     if(!lb.hidden||!modal.hidden)return;
     e.preventDefault();
