@@ -169,7 +169,11 @@ body {
 /* ===== v2: tân trang giao diện + lớp sương ===== */
 :root{--hand:'Dancing Script','Be Vietnam Pro',cursive;--gold:#d9b46a;--rose:#ff9fc4}
 body::after{content:'';position:fixed;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 52%,rgba(6,3,24,.55))}
+<<<<<<< HEAD
 #fog{position:fixed;inset:0;width:100%;height:100%;z-index:4;opacity:0;transition:opacity .6s ease;touch-action:none;cursor:none}
+=======
+#fog{position:fixed;inset:0;width:100%;height:100%;z-index:4;opacity:0;transition:opacity 1.4s ease;touch-action:none;cursor:none}
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
 #fog.show{opacity:1}#fog.gone{opacity:0;pointer-events:none;transition:opacity 1.8s ease}
 .brush{position:fixed;left:0;top:0;z-index:7;border-radius:50%;pointer-events:none;opacity:0;transition:opacity .3s;border:1.5px solid rgba(255,255,255,.6);box-shadow:0 0 26px rgba(200,175,255,.45),inset 0 0 22px rgba(255,255,255,.2)}
 .brush.on{opacity:1}
@@ -191,8 +195,11 @@ body::after{content:'';position:fixed;inset:0;z-index:3;pointer-events:none;back
 @keyframes ink{from{opacity:0;transform:translateY(8px);filter:blur(4px)}}
 #site{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:25;background:#efe3cc;opacity:0;visibility:hidden;transition:opacity 1.2s ease}
 #site.on{opacity:1;visibility:visible}
+<<<<<<< HEAD
 .musicBtn[hidden]{display:none}.musicBtn{position:fixed;top:12px;right:12px;z-index:60;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(40,24,90,.6);color:#fff;font:20px/1 sans-serif;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:0}
 .musicBtn.off{opacity:.7}.musicBtn.off::after{content:'';position:absolute;left:50%;top:50%;width:26px;height:2px;margin:-1px 0 0 -13px;background:#fff;border-radius:2px;transform:rotate(-45deg)}
+=======
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
 #flash{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:0;transition:opacity .9s ease;background:radial-gradient(circle at 50% 50%,#fff,#fff0f8 60%,#ffe3f1)}
 #flash.on{opacity:1}
 .siteOn .ui,.siteOn #starBtn,.siteOn #doveBtn,.siteOn #stage,.siteOn #fog,.siteOn .mail,.siteOn .brush{display:none}
@@ -274,7 +281,10 @@ body.skyOn #skyBack,body.skyOn #skyFront,body.skyOn #doveWrap{visibility:visible
 <i id="brush" class="brush"></i>
 <button id="starBtn" type="button" aria-label="Chạm vào ngôi sao sáng nhất" disabled></button>
 <button id="doveBtn" type="button" aria-label="Mở thư của chú chim" disabled></button>
+<<<<<<< HEAD
 <button id="musicBtn" class="musicBtn off" type="button" aria-label="Bật/tắt nhạc" aria-pressed="false">♪</button>
+=======
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
 <div class="ui">
   <div class="top"><div id="hint" class="hint"><span class="dot"></span><span id="hintText">Chạm vào ngôi sao sáng nhất</span></div></div>
   <div class="bottom">
@@ -975,8 +985,12 @@ const CONFIG={
   char:{show:true,src:'',size:100,hello:'Bấm vào phong thư đi nào!',lines:['Chúc mừng 20/10!','Hôm nay bạn xinh lắm đó.','Nhớ cười thật nhiều nha.','Mình ở đây với bạn nè.']}, // src: 'img/char.png' (PNG đã tách nền) hoặc tải trong Admin
   cosmos:{on:true,title:'',caption:'chạm vào trung tâm…',skip:'Bỏ qua ›',orb:'',words:[],photos:true,stars:150},
   effects:true,                       // hiệu ứng cuộn, cánh hoa, chữ hiện dần
+<<<<<<< HEAD
   heart:{photoCount:-1,wishes:[],photos:[],useAlbum:false},
   fog:{density:86,blur:26,delay:0.35,fade:0.6}, // sương: độ đặc %, độ mờ nền px, chờ trước khi hiện (giây), thời gian hiện dần (giây)
+=======
+  heart:{photoCount:-1,wishes:[]},
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
   intro:{title:'',text:'',button:'Khám phá'},
   theme:{colors:{},fonts:{serif:'',sans:'',hand:''},dove:{src:'',size:100},texts:{t1:'',t2:'',hintStar:'',hintDove:''}},
   music:''                            // 'img/nhac.mp3' hoặc https://…
@@ -1138,9 +1152,15 @@ const sz=()=>{W=innerWidth;H=innerHeight;const d=Math.min(devicePixelRatio||1,1.
   const openL=l=>{const live=h('span',{class:'lv'}),t=h('p',{class:'type'},h('span',{class:'gh'},l.body),live),tx=l.body;modal.hidden=false;modal.replaceChildren(h('div',{class:'sheet'},h('h3',{},l.title),t,h('button',{class:'btn',onclick:close},'Đóng')));clearInterval(tm);if(!fx){live.textContent=tx;return}let i=0;tm=setInterval(()=>{live.textContent=tx.slice(0,++i);if(i>=tx.length)clearInterval(tm)},32)};
   const mail=sec('mail','s-blush gone',h('div',{class:'bk'},rv(h('p',{class:'hand'},'Những lá thư bí mật')),rv(h('h2',{},'Mở từng lá ',h('em',{},'nhé')),1),h('div',{class:'mails'},D.letters.map((l,i)=>rv(h('button',{class:'mail',css:{'--r':((i*29%7)-3)+'deg'},onclick:()=>openL(l)},h('b',{},'♥'),h('span',{},l.title||'Thư')),i))),rv(h('button',{class:'btn',onclick:()=>smooth($('#end'))},'Đến đoạn kết'))));
   // trái tim ghép từ ảnh và lời chúc
+<<<<<<< HEAD
   const HPh=((D.heart&&D.heart.photos)||[]).filter(p=>p&&p.src),pics=HPh.length&&!D.heart.useAlbum?HPh:[...HPh,...D.photos,...D.days.flatMap(e=>e.photos||[])],words=[...new Set([...((D.heart&&D.heart.wishes)||[]),...String(D.wish.text||'').split(/(?<=[.!?])\s+/),...D.days.flatMap(e=>e.wishes||[]),...(C.lines||[])].map(x=>String(x).trim()).filter(Boolean))],NC=13,NR=12,PAL=['#b3262f','#e9b8b0','#5a1626','#c79a4b','#d99f97','#2d4a7a'],hg=h('div',{class:'hg'}),hw=h('div',{class:'hw'+(fx?' fxon':'')},hg),hcap=h('p',{class:'hcap','aria-live':'polite'},'Bấm vào một mảnh ghép nhé…'),hts=[];let pi=0,wi=0;
   let TT=0;for(let r=0;r<NR;r++)for(let c=0;c<NC;c++){const x=(c-(NC-1)/2)/((NC-1)/2)*1.28,y=1.28-r/(NR-1)*2.46;if(!((x*x+y*y-1)**3-x*x*y**3>0))TT++}
   const HP=D.heart||{},PC=HP.photoCount>=0?HP.photoCount:(HPh.length?Math.min(TT,Math.max(HPh.length,Math.ceil(TT/3))):-1),autoH=!(PC>=0),PN=pics.length?(autoH?0:Math.min(PC,TT)):0,phs=new Set();
+=======
+  const pics=[...D.photos,...D.days.flatMap(e=>e.photos||[])],words=[...new Set([...((D.heart&&D.heart.wishes)||[]),...String(D.wish.text||'').split(/(?<=[.!?])\s+/),...D.days.flatMap(e=>e.wishes||[]),...(C.lines||[])].map(x=>String(x).trim()).filter(Boolean))],NC=13,NR=12,PAL=['#b3262f','#e9b8b0','#5a1626','#c79a4b','#d99f97','#2d4a7a'],hg=h('div',{class:'hg'}),hw=h('div',{class:'hw'+(fx?' fxon':'')},hg),hcap=h('p',{class:'hcap','aria-live':'polite'},'Bấm vào một mảnh ghép nhé…'),hts=[];let pi=0,wi=0;
+  let TT=0;for(let r=0;r<NR;r++)for(let c=0;c<NC;c++){const x=(c-(NC-1)/2)/((NC-1)/2)*1.28,y=1.28-r/(NR-1)*2.46;if(!((x*x+y*y-1)**3-x*x*y**3>0))TT++}
+  const HP=D.heart||{},autoH=!(HP.photoCount>=0),PN=pics.length?(autoH?0:Math.min(HP.photoCount,TT)):0,phs=new Set();
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
   if(pics.length&&autoH){for(let k=0;k<TT;k+=3)phs.add(k)}else for(let i=0;i<PN;i++)phs.add(Math.floor((i+.5)*TT/PN));
   for(let r=0;r<NR;r++)for(let c=0;c<NC;c++){const x=(c-(NC-1)/2)/((NC-1)/2)*1.28,y=1.28-r/(NR-1)*2.46;if((x*x+y*y-1)**3-x*x*y**3>0)continue;const k=hts.length;let t;
     if(phs.has(k)){const p=pics[pi++%pics.length],idx=pics.indexOf(p);t=h('button',{class:'ht',css:{'--tc':PAL[1]},'aria-label':'Ảnh: '+(p.caption||'kỷ niệm'),onclick:()=>{hcap.textContent=p.caption||'Một khoảnh khắc nhỏ';show(pics,idx)}},p.src?h('img',{'data-s':p.src,alt:'',decoding:'async',onerror:e=>e.target.replaceWith('✿')}):'✿')}
@@ -1163,7 +1183,11 @@ const sz=()=>{W=innerWidth;H=innerHeight;const d=Math.min(devicePixelRatio||1,1.
   const ids=['cal','wish','book','heart','mail','end'],names=['Lịch','Lời chúc','Kỷ niệm','Trái tim','Thư','Kết'],dots=h('nav',{class:'dots','aria-label':'Các phần',hidden:true},ids.map((id,i)=>h('button',{'aria-label':names[i],title:names[i],onclick:()=>smooth($('#'+id))})));
   const bar=h('i',{id:'bar'});B.prepend(bar);B.append(cal,h('main',{id:'flow',class:'gone'},wish,book,heart,mail,end),dots,intro);
   if(useDraft)B.append(h('a',{class:'draft',href:'?live',title:'Xem bản đã đăng'},'BẢN NHÁP · chỉ thấy trên máy này'));
+<<<<<<< HEAD
   if(D.music&&parent===window){const a=h('audio',{src:D.music,loop:true}),b=h('button',{class:'btn',style:'',css:{position:'fixed',top:'12px',right:'12px','z-index':41,padding:'.6em 1em'},onclick:()=>{a.paused?a.play().catch(()=>{}):a.pause()}},'♪');B.append(a,b)}
+=======
+  if(D.music){const a=h('audio',{src:D.music,loop:true}),b=h('button',{class:'btn',style:'',css:{position:'fixed',top:'12px',right:'12px','z-index':41,padding:'.6em 1em'},onclick:()=>{a.paused?a.play().catch(()=>{}):a.pause()}},'♪');B.append(a,b)}
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
   // burst cánh hoa + mở quà
   let gift=false,last=0;
   function burst(){if(!fx)return;for(let i=0;i<26;i++){const p=h('i',{class:'petal',css:{'--dx':R(-48,48)+'vw','--dy':-R(0,38)+'vh','--d':R(4.5,7.5)+'s','--s':R(10,20)+'px','--w':R(0,.5)+'s','--c':['#e9b8b0','#e9b8b0','#b3262f','#c79a4b'][i%4]}});B.append(p);setTimeout(()=>p.remove(),8500)}}
@@ -1234,7 +1258,11 @@ function adm(){
   const exp=()=>{const out=`window.CONTENT=${JSON.stringify({...D,rev:rv0+1})};`,a=h('a',{href:URL.createObjectURL(new Blob([out],{type:'text/javascript'})),download:'content.js'});B.append(a);a.click();a.remove();note('Đã tải content.js')};
   const imp=()=>{const i=h('input',{type:'file',accept:'.js,.json'});i.onchange=async()=>{try{const t=await i.files[0].text();D=mg(CONFIG,JSON.parse(t.replace(/^[^{]*/,'').replace(/;?\s*$/,'')));save();draw();note('Đã nhập vào bản nháp')}catch{note('File không đúng định dạng',1)}};i.click()};
   const reset=async()=>{if(!confirm('Xóa bản nháp và quay về nội dung đã đăng?'))return;await dbSet('draft',null);D=mg(CONFIG,BASE);D.days.forEach(e=>{e.wishes=e.wishes||[];e.photos=e.photos||[]});draw();note('Đã xóa bản nháp')};
+<<<<<<< HEAD
   const tabs={gen:'⚙️  Chung',cal:'📅  Lịch và ngày đặc biệt',wish:'💌  Lời chúc 20/10',alb:'📷  Album ảnh',let:'✉️  Thư',cos:'🌌  Vũ trụ mở đầu',chr:'🧸  Nhân vật 2D',thm:'🎨  Giao diện · font · chim',fog:'🌫️  Sương mù',mus:'🎵  Nhạc nền',hrt:'💗  Trái tim ghép',pub:'🚀  Xuất bản'};
+=======
+  const tabs={gen:'⚙️  Chung',cal:'📅  Lịch và ngày đặc biệt',wish:'💌  Lời chúc 20/10',alb:'📷  Album ảnh',let:'✉️  Thư',cos:'🌌  Vũ trụ mở đầu',chr:'🧸  Nhân vật 2D',thm:'🎨  Giao diện · font · chim',hrt:'💗  Trái tim ghép',pub:'🚀  Xuất bản'};
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
   const V={
     gen:()=>[h('h2',{},'Chung'),fld('Tên người nhận',D,'to'),fld('Người gửi',D,'from'),fld('Chữ ký',D,'sign'),fld('Lời dưới phong thư',D,'envelope'),fld('Chữ trên dấu sáp',D,'seal'),fld('Mật mã mở quà (để trống = không khóa)',D,'passcode'),fld('Gợi ý mật mã',D,'hint'),fld('Năm của lịch (0 = năm hiện tại)',D,'year',{type:'number',num:1}),fld('Câu cho ngày không có gì đặc biệt',D,'emptyDay',{rows:2}),chk('Bật hiệu ứng (cuộn, cánh hoa, chữ hiện dần)',D,'effects'),fld('Link nhạc nền (https://… hoặc img/nhac.mp3)',D,'music')],
     cal:()=>[h('h2',{},'Lịch và ngày đặc biệt'),h('p',{class:'hint'},'10/10 và 20/10 luôn được tô đậm. Bạn có thể thêm bất kỳ ngày nào khác trong tháng 10, đổi màu, thêm ghi chú, lời chúc và ảnh.'),...[...D.days].sort((a,b)=>a.d-b.d).map(dayCard),addDay()],
@@ -1260,6 +1288,7 @@ function adm(){
         h('h4',{},'Chữ ở màn mở đầu (để trống = mặc định)'),
         fld('Câu thứ nhất',T.texts,'t1',{rows:2}),fld('Câu thứ hai',T.texts,'t2',{rows:2}),fld('Gợi ý ở ngôi sao',T.texts,'hintStar'),fld('Gợi ý ở chú chim',T.texts,'hintDove'),h('h4',{},'Màn sau khi mở chim (thư mở sẵn + nút khám phá)'),fld('Tiêu đề nhỏ',D.intro,'title'),fld('Nội dung (để trống = dùng “Lời dưới phong thư”)',D.intro,'text',{rows:3}),fld('Chữ trên nút',D.intro,'button'),
         h('p',{class:'hint'},'Màu, font và chim áp dụng sau khi tải lại trang quà. Nhớ bấm xuất content.js ở tab Xuất bản.')]},
+<<<<<<< HEAD
     fog:()=>{const F=D.fog=D.fog||{},def={density:86,blur:26,delay:.35,fade:.6};for(const k in def)if(typeof F[k]!=='number')F[k]=def[k];
       const rng=(lab,k,min,max,step,u,tip)=>{const v=h('b',{},F[k]+u),i=h('input',{type:'range',min,max,step,value:F[k],oninput:e=>{F[k]=+e.target.value;v.textContent=F[k]+u;save()}});return h('label',{class:'f'},h('span',{},lab+': ',v),i,h('small',{},tip))};
       return[h('h2',{},'Sương mù'),h('p',{},'Chỉnh lớp sương phủ lên bầu trời lúc mở đầu (lớp mà người xem phải lau). Lưu tự động vào bản nháp.'),
@@ -1288,6 +1317,14 @@ function adm(){
         h('div',{class:'ctl'},bt('💌 Lấp đầy bằng lời chúc',()=>set(0),'btn'),bt('− 1 lời chúc, + 1 ảnh',()=>{if(!np)return note('Chưa có ảnh nào để thêm',1);set(Math.min(P+1,TT))}),bt('+ 1 lời chúc, − 1 ảnh',()=>set(Math.max(0,P-1))),bt('📷 Toàn bộ ô là ảnh',()=>{if(!np)return note('Chưa có ảnh nào để ghép',1);set(TT)}),bt('Tự động (cứ 3 ô có 1 ảnh)',()=>set(-1))),
         h('h4',{},'Ảnh ghép riêng vào trái tim'),h('p',{class:'hint'},'Chọn ảnh từ máy (được nhiều ảnh cùng lúc), chúng sẽ lấp vào các ô ảnh của trái tim; ít ảnh hơn số ô thì ảnh được lặp lại. Có ảnh riêng thì trái tim chỉ dùng các ảnh này.'),photoList(Hh.photos),
         h('label',{class:'f ck'},h('input',{type:'checkbox',checked:!!Hh.useAlbum,onchange:e=>{Hh.useAlbum=e.target.checked;save();draw()}}),' Ghép thêm cả ảnh album và ảnh các ngày vào trái tim'),
+=======
+    hrt:()=>{const Hh=D.heart;Hh.wishes=Hh.wishes||[];
+      let TT=0;for(let r=0;r<12;r++)for(let c=0;c<13;c++){const x=(c-6)/6*1.28,y=1.28-r/11*2.46;if(!((x*x+y*y-1)**3-x*x*y**3>0))TT++}
+      const np=D.photos.length+D.days.reduce((n,e)=>n+(e.photos||[]).length,0),auto=!(Hh.photoCount>=0),P=np?(auto?Math.ceil(TT/3):Math.min(Hh.photoCount,TT)):0,set=n=>{Hh.photoCount=n;save();draw()};
+      return[h('h2',{},'Trái tim ghép'),
+        h('p',{},`Trái tim có ${TT} ô: ${TT-P} lời chúc + ${P} ảnh (hiện có ${np} ảnh trong album và các ngày${np?'':', hãy thêm ảnh để dùng ô ảnh'}).`),
+        h('div',{class:'ctl'},bt('💌 Lấp đầy bằng lời chúc',()=>set(0),'btn'),bt('− 1 lời chúc, + 1 ảnh',()=>{if(!np)return note('Chưa có ảnh nào để thêm',1);set(Math.min(P+1,TT))}),bt('+ 1 lời chúc, − 1 ảnh',()=>set(Math.max(0,P-1))),bt('Tự động (cứ 3 ô có 1 ảnh)',()=>set(-1))),
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
         h('h4',{},'Lời chúc riêng cho trái tim (thêm vào lời chúc sẵn có, lặp lại nếu chưa đủ ô)'),strList(Hh.wishes,'Lời chúc')]},
     pub:()=>[h('h2',{},'Xuất bản'),h('p',{},`Bản nháp hiện có ${D.photos.length+D.days.reduce((n,e)=>n+e.photos.length,0)} ảnh trong album và ngày, dung lượng khoảng ${(JSON.stringify(D).length/1048576).toFixed(1)} MB.`),h('ol',{class:'steps'},h('li',{},'Bấm “Tải content.js”.'),h('li',{},'Bỏ file đó vào thư mục dự án, cạnh index.html (ghi đè nếu đã có).'),h('li',{},'Mở CMD tại thư mục đó và chạy: git add . → git commit -m "Cap nhat noi dung" → git push.'),h('li',{},'Render tự deploy lại, mọi người sẽ thấy nội dung mới.')),h('div',{class:'ctl'},bt('Tải content.js',exp,'btn'),bt('Nhập từ content.js',imp),bt('Xóa bản nháp',reset)),h('p',{class:'hint'},'Admin chỉ lưu bản nháp trong trình duyệt này. Người khác chỉ thấy nội dung sau khi bạn đưa content.js lên Git.')]};
   function draw(){root.replaceChildren(h('div',{class:'wrap'},h('aside',{},h('h3',{},'🌸 Tiny 20/10'),...Object.entries(tabs).map(([k,v])=>h('button',{class:k===tab?'on':'',onclick:()=>{tab=k;draw()}},v)),h('a',{href:location.href.split('#')[0],target:'_blank',rel:'noopener'},'Xem trang ↗')),h('main',{},...V[tab]())))}
@@ -1321,6 +1358,7 @@ location.hash==='#admin'?adm():pub();
   var scrim = document.getElementById('scrim');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+<<<<<<< HEAD
 
   /* ---------- nhạc nền (phát sau lần chạm đầu tiên; thiếu file thì dùng nhạc tự tạo) ---------- */
   var MUS = { src: '', on: true, armed: false, playing: false, fail: false, el: null };
@@ -1385,6 +1423,8 @@ location.hash==='#admin'?adm():pub();
     if (dr && dr.data && dr.base === ((window.CONTENT && window.CONTENT.rev) || 1)) { applyCfg(dr.data); return idbGet('musicBlob'); }
   }).then(function (b) { if (b && b.blob) musSet(URL.createObjectURL(b.blob)); }).catch(function () {}).then(function () { cfgReady = true; });
 
+=======
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
   var fogCv = document.getElementById('fog'), fc = fogCv.getContext('2d'), brush = document.getElementById('brush');
   var coarse = window.matchMedia && matchMedia('(pointer:coarse)').matches;
   var fogOn = true, fogBuilt = false, wiping = false, lastP = null, wiped = 0, p0At = 0, THR = 52, grid = new Uint8Array(1296);
@@ -2186,6 +2226,7 @@ function paintDove(g,ph,hv){
   function buildFog() {
     var FD = Math.min(DPR, 1); fogCv.width = Math.round(W * FD); fogCv.height = Math.round(H * FD);
     fc.setTransform(FD, 0, 0, FD, 0, 0); fc.globalCompositeOperation = 'source-over';
+<<<<<<< HEAD
     if ('filter' in fc) { fc.filter = 'blur(' + Math.max(0, FOG.blur) + 'px)'; fc.drawImage(cv, -40, -40, W + 80, H + 80); fc.filter = 'none'; }
     else { var tmp = document.createElement('canvas'); tmp.width = Math.ceil(W / 14); tmp.height = Math.ceil(H / 14); tmp.getContext('2d').drawImage(cv, 0, 0, tmp.width, tmp.height); fc.imageSmoothingQuality = 'high'; fc.drawImage(tmp, 0, 0, W, H); }
     var dk = FOG.density / 86; fc.fillStyle = 'rgba(214,226,248,' + Math.min(1, FOG.density / 100) + ')'; fc.fillRect(0, 0, W, H);
@@ -2194,12 +2235,27 @@ function paintDove(g,ph,hv){
     var r = mulberry(31), i, x, y, rd, q;
     for (i = 0; i < 300; i++) {
       x = r() * W; y = r() * H; rd = 1.2 + r() * r() * 5.5;
+=======
+    if ('filter' in fc) { fc.filter = 'blur(16px)'; fc.drawImage(cv, -40, -40, W + 80, H + 80); fc.filter = 'none'; }
+    else { var tmp = document.createElement('canvas'); tmp.width = Math.ceil(W / 14); tmp.height = Math.ceil(H / 14); tmp.getContext('2d').drawImage(cv, 0, 0, tmp.width, tmp.height); fc.imageSmoothingQuality = 'high'; fc.drawImage(tmp, 0, 0, W, H); }
+    fc.fillStyle = 'rgba(206,222,248,.4)'; fc.fillRect(0, 0, W, H);
+    var gg = fc.createLinearGradient(0, 0, 0, H); gg.addColorStop(0, 'rgba(255,255,255,.2)'); gg.addColorStop(1, 'rgba(190,170,240,.12)');
+    fc.fillStyle = gg; fc.fillRect(0, 0, W, H);
+    var r = mulberry(31), i, x, y, rd, q;
+    for (i = 0; i < 160; i++) {
+      x = r() * W; y = r() * H; rd = 1.2 + r() * r() * 5;
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
       q = fc.createRadialGradient(x - rd * .3, y - rd * .3, 0, x, y, rd);
       q.addColorStop(0, 'rgba(255,255,255,.7)'); q.addColorStop(1, 'rgba(200,220,245,.08)');
       fc.fillStyle = q; fc.beginPath(); fc.arc(x, y, rd, 0, TAU); fc.fill();
     }
+<<<<<<< HEAD
     for (i = 0; i < 4500; i++) { fc.fillStyle = 'rgba(255,255,255,' + (0.03 + r() * 0.08) + ')'; fc.fillRect(r() * W, r() * H, 1.3, 1.3); }
     grid.fill(0); wiped = 0; fogBuilt = true; fogCv.style.transitionDuration = Math.max(0.05, FOG.fade) + 's'; fogCv.classList.add('show');
+=======
+    for (i = 0; i < 2200; i++) { fc.fillStyle = 'rgba(255,255,255,' + (0.02 + r() * 0.06) + ')'; fc.fillRect(r() * W, r() * H, 1.3, 1.3); }
+    grid.fill(0); wiped = 0; fogBuilt = true; fogCv.classList.add('show');
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
     hintText.textContent = HINT_FOG; hintEl.classList.add('fog', 'in');
   }
   function fogR() { return Math.max(46, Math.min(W, H) * 0.08); }
@@ -2224,7 +2280,11 @@ function paintDove(g,ph,hv){
   }
   function clearFog() {
     if (!fogOn) return; fogOn = false; wiping = false; brush.classList.remove('on');
+<<<<<<< HEAD
     fogCv.style.transitionDuration = ''; fogCv.classList.remove('show'); fogCv.classList.add('gone'); hintEl.classList.remove('in');
+=======
+    fogCv.classList.remove('show'); fogCv.classList.add('gone'); hintEl.classList.remove('in');
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
     if (phase === 'fog') { phase = 'p0'; p0At = nowT; }
     setTimeout(function () { hintText.textContent = HINT_STAR; hintEl.classList.remove('fog'); fogCv.style.display = 'none'; }, 1800);
   }
@@ -2405,7 +2465,11 @@ function paintDove(g,ph,hv){
       slowSum += dt; if (++slowN >= 20) { if (slowSum / slowN > 0.026 && DPR > 1) setDpr(Math.max(1, DPR - 0.25)); slowN = 0; slowSum = 0; }
       if (!prepped && t > 3) { prepped = true; dvStart(); setTimeout(function () { if (!skyBuilt) buildSkyDOM(); }, 900); }
     }
+<<<<<<< HEAD
     if (phase === 'fog' && !fogBuilt && cfgReady && t > FOG.delay && (galCv || t > FOG.delay + 0.85)) buildFog();
+=======
+    if (phase === 'fog' && !fogBuilt && t > 1.8 && galCv) buildFog();
+>>>>>>> a29e4ea33c1f0f5b18faff8910ffdaf3a9d9c7f5
     if (phase === 'p0') {
       if (captionStage === 0 && t - p0At > 1.9) { captionStage = -1; setCaption(T1); }
       if (t - p0At > 7) startZoom(t);
